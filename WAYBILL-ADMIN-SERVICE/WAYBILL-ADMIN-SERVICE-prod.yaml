@@ -1,0 +1,28 @@
+server:
+  port: 4000
+  shutdown: graceful
+
+spring:
+  threads:
+    virtual:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+
+eureka:
+  instance:
+    hostname: localhost
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 10
+  client:
+    service-url:
+      defaultZone: http://eureka:eureka_pwd@${eureka.instance.hostname}:8761/eureka/
+    registryFetchIntervalSeconds: 10
