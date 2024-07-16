@@ -1,0 +1,21 @@
+server:
+  port: 8761
+  shutdown: graceful
+
+spring:
+  application:
+    name: WAYBILL-REGISTRY
+
+  security:
+    user:
+      name: eureka
+      password: eureka_pwd
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
