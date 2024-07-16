@@ -1,0 +1,6 @@
+spring:
+  boot:
+    admin:
+      client:
+        instance:
+          service-url: lb://WAYBILL-ADMIN-SERVICE
