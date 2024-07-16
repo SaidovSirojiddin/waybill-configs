@@ -5,14 +5,14 @@ server:
 spring:
   profiles:
     active:
-        - admin
-        - circuit-breaker
-        - docker
-        - eureka
-        - routes
-        - oauth2
-        - open-api
-        - whitelist
+        - prod-admin
+        - prod-circuit-breaker
+        - prod-docker
+        - prod-eureka
+        - prod-routes
+        - prod-oauth2
+        - prod-open-api
+        - prod-whitelist
 
 management:
   endpoints:
