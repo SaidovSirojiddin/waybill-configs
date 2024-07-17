@@ -4,16 +4,13 @@ spring:
       discovery:
         locator:
           enabled: true
-
-      default-filters:
-        - TokenRelay=
-
       routes:
         - id: user-service
           uri: lb://WAYBILL-USER-SERVICE
           predicates:
             - Path=/user-service/**
           filters:
+            - TokenRelay=
             - RewritePath=/user-service/(?<path>.*), /$\{path}
             - name: CircuitBreaker
               args:
@@ -25,6 +22,7 @@ spring:
           predicates:
             - Path=/vehicle-service/**
           filters:
+            - TokenRelay=
             - RewritePath=/vehicle-service/(?<suburl>.*),/${suburl}
             - name: CircuitBreaker
               args:
