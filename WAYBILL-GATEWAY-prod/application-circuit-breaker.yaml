@@ -1,0 +1,22 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      circuit-breaker-config:
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 1
+        minimumNumberOfCalls: 5
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        eventConsumerBufferSize: 10
+        registerHealthIndicator: true
+  retry:
+    instances:
+      circuit-breaker-config:
+        maxAttempts: 1
+        waitDuration: 1s
+  timelimiter:
+    instances:
+      circuit-breaker-config:
+        timeoutDuration: 5s
+        cancelRunningFuture: true

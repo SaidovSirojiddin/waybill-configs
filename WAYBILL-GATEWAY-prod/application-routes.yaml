@@ -1,0 +1,73 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
+      default-filters:
+        - TokenRelay=
+
+      routes:
+        - id: user-service
+          uri: lb://WAYBILL-USER-SERVICE
+          predicates:
+            - Path=/user-service/v3/api-docs, /user-service/**
+          filters:
+            - RewritePath=/user-service/(?<path>.*), /$\{path}
+            - name: CircuitBreaker
+              args:
+                name: circuit-breaker-config
+                fallbackUri: forward:/fallback/user-service
+
+        - id: vehicle-service
+          uri: lb://WAYBILL-VEHICLE-SERVICE
+          predicates:
+            - Path=/vehicle-service/v3/api-docs, /vehicle-service/**
+          filters:
+            - RewritePath=/vehicle-service/(?<suburl>.*),/${suburl}
+            - name: CircuitBreaker
+              args:
+                name: vehicleServiceFallBack
+                fallbackUri: forward:/fallback/vehicle-service
+
+        - id: file-service
+          uri: lb://WAYBILL-FILE-SERVICE
+          predicates:
+            - Path=/file-service/v3/api-docs, /file-service/**
+          filters:
+            - RewritePath=/file-service/(?<path>.*), /$\{path}
+            - name: CircuitBreaker
+              args:
+                name: fileServiceFallBack
+                fallbackUri: forward:/fallback/file-service
+
+        - id: driver-service
+          uri: lb://WAYBILL-DRIVER-SERVICE
+          predicates:
+            - Path=/driver-service/v3/api-docs, /driver-service/**
+          filters:
+            - RewritePath=/driver-service/(?<path>.*), /$\{path}
+            - name: CircuitBreaker
+              args:
+                name: driverServiceFallBack
+                fallbackUri: forward:/fallback/driver-service
+
+        - id: ticket-service
+          uri: lb://WAYBILL-TICKET
+          predicates:
+            - Path=/ticket-service/v3/api-docs, /ticket-service/**
+          filters:
+            - RewritePath=/ticket-service/(?<path>.*), /$\{path}
+            - name: CircuitBreaker
+              args:
+                name: driverServiceFallBack
+                fallbackUri: forward:/fallback/ticket-service
+
+
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs

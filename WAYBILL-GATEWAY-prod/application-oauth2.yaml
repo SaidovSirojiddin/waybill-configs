@@ -1,0 +1,19 @@
+spring:
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          jwk-set-uri: https://keycloak.dtransport.uz/realms/waybill/protocol/openid-connect/certs
+      client:
+        provider:
+          keycloak:
+            issuer-uri: https://keycloak.dtransport.uz/realms/waybill
+        registration:
+          waybill-oauth2:
+            provider: keycloak
+            client-id: waybill-id
+            client-secret: GMKTpfHHGUk9Y2b2VpAiYEKFDpYXmHmD
+            authorization-grant-type: authorization_code
+            scope:
+              - openid
+              - discovery

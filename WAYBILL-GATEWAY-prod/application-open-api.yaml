@@ -1,0 +1,21 @@
+springdoc:
+  enable-native-support: true
+  api-docs:
+    enabled: true
+    groups:
+      enabled: true
+  swagger-ui:
+    enabled: true
+    path: '/swagger-ui.html'
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - url: /user-service/v3/api-docs
+        name: User Service
+      - url: /vehicle-service/v3/api-docs
+        name: Vehicle Service
+      - url: /file-service/v3/api-docs
+        name: File Service
+      - url: /driver-service/v3/api-docs
+        name: Driver Service
+      - url: /ticket-service/v3/api-docs
+        name: Ticket Service
