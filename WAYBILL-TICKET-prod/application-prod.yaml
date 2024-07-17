@@ -1,0 +1,27 @@
+server:
+  port: 8787
+  shutdown: graceful
+
+spring:
+  profiles:
+    active: prod-database,prod-docker,prod-eureka,prod-oauth2,prod-keycloak,prod-kafka,prod-open-api
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+    endpoint:
+      health:
+        show-details: ALWAYS
+
+
+application:
+  version: ${version}
+  whitelist:
+    - '/actuator'
+    - '/actuator/**'
+    - '/v3/api-docs/**'
+    - '/swagger-ui/**'
+    - '/swagger-ui.html'
+    - '/eureka/**'

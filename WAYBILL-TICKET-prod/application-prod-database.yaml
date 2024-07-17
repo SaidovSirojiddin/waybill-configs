@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://${spring.data.mongodb.username}:${spring.data.mongodb.password}@${spring.data.mongodb.host}:${spring.data.mongodb.port}/?authSource=admin
+      host: 192.168.88.246
+      port: 3678
+      database: ticket
+      password: 'WBTicket24'
+      username: ticket
+      uuid-representation: standard
