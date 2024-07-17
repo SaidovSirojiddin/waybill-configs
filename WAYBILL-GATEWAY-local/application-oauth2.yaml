@@ -3,7 +3,8 @@ spring:
     oauth2:
       resource-server:
         jwt:
-          jwk-set-uri: https://keycloak.dtransport.uz/realms/waybill/protocol/openid-connect/certs
+          issuer-uri: https://keycloak.dtransport.uz/realms/waybill
+#          jwk-set-uri: https://keycloak.dtransport.uz/realms/waybill/protocol/openid-connect/certs
       client:
         provider:
           keycloak:
