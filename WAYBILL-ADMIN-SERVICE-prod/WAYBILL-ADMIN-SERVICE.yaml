@@ -19,7 +19,7 @@ management:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: 192.168.88.244
     leaseRenewalIntervalInSeconds: 10
     leaseExpirationDurationInSeconds: 10
   client:
