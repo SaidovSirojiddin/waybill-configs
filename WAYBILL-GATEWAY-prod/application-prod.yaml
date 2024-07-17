@@ -2,10 +2,10 @@ server:
   port: 8080
   shutdown: graceful
 
-#spring:
-#  cloud:
-#    config:
-#      profile: prod-admin,prod-circuit-breaker,prod-docker,prod-eureka,prod-routes,prod-oauth2,prod-open-api,prod-whitelist
+spring:
+  cloud:
+    config:
+      profile: prod-admin,prod-circuit-breaker,prod-docker,prod-eureka,prod-routes,prod-oauth2,prod-open-api,prod-whitelist
 
 management:
   endpoints:
