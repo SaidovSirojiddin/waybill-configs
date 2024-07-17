@@ -15,7 +15,6 @@ spring:
             - Path=/user-service/**
           filters:
             - RewritePath=/user-service/(?<path>.*), /$\{path}
-            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             - name: CircuitBreaker
               args:
                 name: circuit-breaker-config
@@ -27,7 +26,6 @@ spring:
             - Path=/vehicle-service/**
           filters:
             - RewritePath=/vehicle-service/(?<suburl>.*),/${suburl}
-            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
             - name: CircuitBreaker
               args:
                 name: vehicleServiceFallBack
