@@ -4,7 +4,6 @@ spring:
     url: jdbc:postgresql://localhost:55432/waybill_driver
     username: postgres
     password: waybill_pwd
-
   flyway:
     enabled: true
     baseline-on-migrate: true
