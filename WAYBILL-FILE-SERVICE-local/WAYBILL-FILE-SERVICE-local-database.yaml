@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.88.246:5435/waybill_file
+    url: jdbc:postgresql://localhost:35432/waybill_file
     username: postgres
     password: waybill_pwd
   flyway:
