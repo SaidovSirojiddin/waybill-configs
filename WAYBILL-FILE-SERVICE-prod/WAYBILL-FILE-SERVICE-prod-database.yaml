@@ -11,7 +11,3 @@ spring:
     locations:
       - classpath:db/migration/structure
     schemas: public
-
-
-
-#Todo: need to be updated from JPA to Spring JDBS
