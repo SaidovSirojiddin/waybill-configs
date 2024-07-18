@@ -6,15 +6,15 @@ spring:
   profiles:
     active: admin,database,docker,eureka,oauth2,open-api
 
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: "*"
-    endpoint:
-      health:
-        show-details: ALWAYS
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
 
 application:
   whitelist:
