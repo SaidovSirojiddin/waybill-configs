@@ -51,7 +51,19 @@ whitelist:
     - '/ticket-service/eureka/**'
     - '/ticket-service/v3/api-docs'
 
-  driverService:
+  file-service:
+    - '/file-service/webjars/swagger-ui/**'
+    - '/file-service/swagger-ui/**'
+    - '/file-service/swagger-doc/**'
+    - '/file-service/swagger-resources/**'
+    - '/file-service/actuator/health'
+    - '/file-service/actuator/metrics'
+    - '/file-service/actuator/metrics/**'
+    - '/file-service/v3/api-docs/**'
+    - '/file-service/eureka/**'
+    - '/file-service/v3/api-docs'
+
+  driver-service:
     - '/driver-service/swagger-ui.html'
     - '/driver-service/webjars/swagger-ui/**'
     - '/driver-service/swagger-ui/**'
