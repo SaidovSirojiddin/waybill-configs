@@ -5,6 +5,6 @@ spring:
       host: 192.168.88.246
       port: 3678
       database: ticket
-      password: 'WBTicket24'
+      password: WBTicket24
       username: ticket
       uuid-representation: standard
