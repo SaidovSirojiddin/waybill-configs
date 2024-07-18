@@ -10,7 +10,7 @@ spring:
 
       routes:
         - id: user-service
-          uri: lb://WAYBILL-USER-SERVICE-prod
+          uri: lb://WAYBILL-USER-SERVICE-PROD
           predicates:
             - Path=/user-service/v3/api-docs, /user-service/**
           filters:
@@ -21,7 +21,7 @@ spring:
                 fallbackUri: forward:/fallback/user-service
 
         - id: vehicle-service
-          uri: lb://WAYBILL-VEHICLE-SERVICE-prod
+          uri: lb://WAYBILL-VEHICLE-SERVICE-PROD
           predicates:
             - Path=/vehicle-service/v3/api-docs, /vehicle-service/**
           filters:
@@ -32,7 +32,7 @@ spring:
                 fallbackUri: forward:/fallback/vehicle-service
 
         - id: file-service
-          uri: lb://WAYBILL-FILE-SERVICE-prod
+          uri: lb://WAYBILL-FILE-SERVICE-PROD
           predicates:
             - Path=/file-service/v3/api-docs, /file-service/**
           filters:
@@ -43,7 +43,7 @@ spring:
                 fallbackUri: forward:/fallback/file-service
 
         - id: driver-service
-          uri: lb://WAYBILL-DRIVER-SERVICE-prod
+          uri: lb://WAYBILL-DRIVER-SERVICE-PROD
           predicates:
             - Path=/driver-service/v3/api-docs, /driver-service/**
           filters:
@@ -54,7 +54,7 @@ spring:
                 fallbackUri: forward:/fallback/driver-service
 
         - id: ticket-service
-          uri: lb://WAYBILL-TICKET-SERVICE-prod
+          uri: lb://WAYBILL-TICKET-SERVICE-PROD
           predicates:
             - Path=/ticket-service/v3/api-docs, /ticket-service/**
           filters:
