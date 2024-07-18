@@ -1,0 +1,263 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  cloud:
+    config:
+      profile: prod-admin,prod-circuit-breaker,prod-docker,prod-eureka,prod-routes,prod-oauth2,prod-open-api,prod-whitelist
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+---
+
+spring:
+  boot:
+    admin:
+      client:
+        instance:
+          service-url: lb://WAYBILL-ADMIN-SERVICE
+
+---
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      circuit-breaker-config:
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 1
+        minimumNumberOfCalls: 5
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        eventConsumerBufferSize: 10
+        registerHealthIndicator: true
+  retry:
+    instances:
+      circuit-breaker-config:
+        maxAttempts: 1
+        waitDuration: 1s
+  timelimiter:
+    instances:
+      circuit-breaker-config:
+        timeoutDuration: 5s
+        cancelRunningFuture: true
+
+---
+
+spring:
+  docker:
+    compose:
+      enabled: false
+      file: compose.yaml
+
+---
+
+eureka:
+  instance:
+    hostname: 192.168.88.244
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 10
+  client:
+    service-url:
+      defaultZone: http://eureka:eureka_pwd@${eureka.instance.hostname}:8761/eureka/
+    registryFetchIntervalSeconds: 10
+
+---
+
+spring:
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          jwk-set-uri: https://keycloak.dtransport.uz/realms/waybill/protocol/openid-connect/certs
+      client:
+        provider:
+          keycloak:
+            issuer-uri: https://keycloak.dtransport.uz/realms/waybill
+        registration:
+          waybill-oauth2:
+            provider: keycloak
+            client-id: waybill-id
+            client-secret: aa1XwVCl18HWw5XtQRvZepQ8vC1QuUWw
+            authorization-grant-type: authorization_code
+            scope:
+              - openid
+              - discovery
+
+
+---
+
+springdoc:
+  enable-native-support: true
+  api-docs:
+    enabled: true
+    groups:
+      enabled: true
+  swagger-ui:
+    enabled: true
+    path: '/swagger-ui.html'
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - url: /user-service/v3/api-docs
+        name: User Service
+      - url: /vehicle-service/v3/api-docs
+        name: Vehicle Service
+      - url: /file-service/v3/api-docs
+        name: File Service
+      - url: /driver-service/v3/api-docs
+        name: Driver Service
+      - url: /ticket-service/v3/api-docs
+        name: Ticket Service
+
+---
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
+      default-filters:
+        - TokenRelay=
+
+      routes:
+        - id: user-service
+          uri: lb://WAYBILL-USER-SERVICE
+          predicates:
+            - Path=/user-service/v3/api-docs, /user-service/**
+          filters:
+            - RewritePath=/user-service/(?<path>.*), /$\{path}
+            - name: CircuitBreaker
+              args:
+                name: circuit-breaker-config
+                fallbackUri: forward:/fallback/user-service
+
+        - id: vehicle-service
+          uri: lb://WAYBILL-VEHICLE-SERVICE
+          predicates:
+            - Path=/vehicle-service/v3/api-docs, /vehicle-service/**
+          filters:
+            - RewritePath=/vehicle-service/(?<suburl>.*),/${suburl}
+            - name: CircuitBreaker
+              args:
+                name: vehicleServiceFallBack
+                fallbackUri: forward:/fallback/vehicle-service
+
+        - id: file-service
+          uri: lb://WAYBILL-FILE-SERVICE
+          predicates:
+            - Path=/file-service/v3/api-docs, /file-service/**
+          filters:
+            - RewritePath=/file-service/(?<path>.*), /$\{path}
+            - name: CircuitBreaker
+              args:
+                name: fileServiceFallBack
+                fallbackUri: forward:/fallback/file-service
+
+        - id: driver-service
+          uri: lb://WAYBILL-DRIVER-SERVICE
+          predicates:
+            - Path=/driver-service/v3/api-docs, /driver-service/**
+          filters:
+            - RewritePath=/driver-service/(?<path>.*), /$\{path}
+            - name: CircuitBreaker
+              args:
+                name: driverServiceFallBack
+                fallbackUri: forward:/fallback/driver-service
+
+        - id: ticket-service
+          uri: lb://WAYBILL-TICKET
+          predicates:
+            - Path=/ticket-service/v3/api-docs, /ticket-service/**
+          filters:
+            - RewritePath=/ticket-service/(?<path>.*), /$\{path}
+            - name: CircuitBreaker
+              args:
+                name: driverServiceFallBack
+                fallbackUri: forward:/fallback/ticket-service
+
+
+        - id: openapi
+          uri: http://192.168.88.244:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+
+
+---
+
+whitelist:
+  gateway:
+    - '/swagger-ui.html'
+    - '/webjars/swagger-ui/**'
+    - '/swagger-ui/**'
+    - '/swagger-doc/**'
+    - '/swagger-resources/**'
+    - '/actuator/health'
+    - '/actuator/metrics'
+    - '/actuator/metrics/**'
+    - '/v3/api-docs/**'
+    - '/eureka/**'
+
+  userService:
+    - '/user-service/swagger-ui.html'
+    - '/user-service/webjars/swagger-ui/**'
+    - '/user-service/swagger-ui/**'
+    - '/user-service/swagger-doc/**'
+    - '/user-service/swagger-resources/**'
+    - '/user-service/actuator/health'
+    - '/user-service/actuator/metrics'
+    - '/user-service/actuator/metrics/**'
+    - '/user-service/v3/api-docs/**'
+    - '/user-service/eureka/**'
+    - '/user-service/v3/api-docs'
+    - '/user-service/api/v1/auth-user/token'
+    - '/user-service/api/v1/auth-user/refresh-token'
+
+  vehicleService:
+    - '/vehicle-service/swagger-ui.html'
+    - '/vehicle-service/webjars/swagger-ui/**'
+    - '/vehicle-service/swagger-ui/**'
+    - '/vehicle-service/swagger-doc/**'
+    - '/vehicle-service/swagger-resources/**'
+    - '/vehicle-service/actuator/health'
+    - '/vehicle-service/actuator/metrics'
+    - '/vehicle-service/actuator/metrics/**'
+    - '/vehicle-service/v3/api-docs/**'
+    - '/vehicle-service/eureka/**'
+    - '/vehicle-service/v3/api-docs'
+
+  ticket-service:
+    - '/ticket-service/webjars/swagger-ui/**'
+    - '/ticket-service/swagger-ui/**'
+    - '/ticket-service/swagger-doc/**'
+    - '/ticket-service/swagger-resources/**'
+    - '/ticket-service/actuator/health'
+    - '/ticket-service/actuator/metrics'
+    - '/ticket-service/actuator/metrics/**'
+    - '/ticket-service/v3/api-docs/**'
+    - '/ticket-service/eureka/**'
+    - '/ticket-service/v3/api-docs'
+
+  driverService:
+    - '/driver-service/swagger-ui.html'
+    - '/driver-service/webjars/swagger-ui/**'
+    - '/driver-service/swagger-ui/**'
+    - '/driver-service/swagger-doc/**'
+    - '/driver-service/swagger-resources/**'
+    - '/driver-service/actuator/health'
+    - '/driver-service/actuator/metrics'
+    - '/driver-service/actuator/metrics/**'
+    - '/driver-service/v3/api-docs/**'
+    - '/driver-service/eureka/**'
+    - '/driver-service/v3/api-docs'
