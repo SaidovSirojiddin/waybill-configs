@@ -3,16 +3,8 @@ server:
   shutdown: graceful
 
 spring:
-  application:
-    name: WAYBILL-FILE-SERVICE
   profiles:
-    active:
-      - admin
-      - database
-      - docker
-      - eureka
-      - oauth2
-      - open-api
+    active: admin,database,docker,eureka,oauth2,open-api
 
 management:
   endpoints:
