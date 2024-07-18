@@ -1,0 +1,35 @@
+server:
+  port: 8010
+  shutdown: graceful
+
+spring:
+  application:
+    name: WAYBILL-VEHICLE-SERVICE
+  profiles:
+    active:
+      - admin
+      - database
+      - docker
+      - eureka
+      - oauth2
+      - open-api
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+
+application:
+  whitelist:
+    - '/actuator'
+    - '/actuator/**'
+    - '/v3/api-docs'
+    - '/v3/api-docs/**'
+    - '/swagger-ui/**'
+    - '/swagger-ui.html'
+    - '/eureka/**'
