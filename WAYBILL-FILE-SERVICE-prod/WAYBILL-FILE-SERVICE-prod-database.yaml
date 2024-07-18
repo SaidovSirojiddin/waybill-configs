@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:35432/waybill_file
+    username: postgres
+    password: waybill_pwd
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+
+#Todo: need to be updated from JPA to Spring JDBS
