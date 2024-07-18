@@ -1,0 +1,28 @@
+server:
+  port: 8050
+  shutdown: graceful
+
+spring:
+  profiles:
+    active: admin,database,docker,eureka,oauth2,open-api
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+
+application:
+  version: ${version}
+  whitelist:
+    - '/actuator'
+    - '/actuator/**'
+    - '/v3/api-docs'
+    - '/v3/api-docs/**'
+    - '/swagger-ui/**'
+    - '/swagger-ui.html'
+    - '/eureka/**'
