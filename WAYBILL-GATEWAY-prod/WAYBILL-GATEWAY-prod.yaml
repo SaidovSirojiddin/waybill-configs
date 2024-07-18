@@ -5,7 +5,7 @@ server:
 spring:
   cloud:
     config:
-      profile: prod-admin,prod-circuit-breaker,prod-docker,prod-eureka,prod-routes,prod-oauth2,prod-open-api,prod-whitelist
+      profile: admin,circuit-breaker,docker,eureka,routes,oauth2,open-api,whitelist
 
 management:
   endpoints:
