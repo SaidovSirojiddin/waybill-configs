@@ -6,7 +6,7 @@ spring:
           enabled: true
       routes:
         - id: user-service
-          uri: lb://WAYBILL-USER-SERVICE
+          uri: lb://WAYBILL-USER-SERVICE-local
           predicates:
             - Path=/user-service/**
           filters:
@@ -18,7 +18,7 @@ spring:
                 fallbackUri: forward:/fallback/user-service
 
         - id: vehicle-service
-          uri: lb://WAYBILL-VEHICLE-SERVICE
+          uri: lb://WAYBILL-VEHICLE-SERVICE-local
           predicates:
             - Path=/vehicle-service/**
           filters:
@@ -41,7 +41,7 @@ spring:
                 fallbackUri: forward:/fallback/file-service
 
         - id: driver-service
-          uri: lb://WAYBILL-DRIVER-SERVICE
+          uri: lb://WAYBILL-DRIVER-SERVICE-local
           predicates:
             - Path=/driver-service/v3/api-docs, /driver-service/**
           filters:

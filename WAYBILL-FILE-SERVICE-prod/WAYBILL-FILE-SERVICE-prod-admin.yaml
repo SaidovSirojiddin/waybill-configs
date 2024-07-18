@@ -3,4 +3,4 @@ spring:
     admin:
       client:
         instance:
-          service-url: lb://WAYBILL-ADMIN-SERVICE
+          service-url: lb://WAYBILL-ADMIN-SERVICE-prod
