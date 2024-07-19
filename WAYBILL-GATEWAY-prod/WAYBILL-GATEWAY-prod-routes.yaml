@@ -70,7 +70,7 @@ spring:
                 fallbackUri: forward:/fallback/driver-service
 
         - id: ticket-service
-          uri: lb://WAYBILL-TICKET-SERVICE-PROD
+          uri: lb://WAYBILL-TICKET-SERVICE-prod
           predicates:
             - Path=/ticket-service/v3/api-docs, /ticket-service/**
           filters:
