@@ -1,7 +1,3 @@
-server:
-  servlet:
-    context-path: /file-service
-
 spring:
   servlet:
     multipart:
