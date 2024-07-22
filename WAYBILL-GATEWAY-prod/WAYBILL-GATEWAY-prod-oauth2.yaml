@@ -12,7 +12,7 @@ spring:
           waybill-oauth2:
             provider: keycloak
             client-id: waybill-id
-#            client-secret: q9pLqIpduvdNBmGIjKFIabZaF4YERJO6
+            client-secret: q9pLqIpduvdNBmGIjKFIabZaF4YERJO6
             authorization-grant-type: authorization_code
             scope:
               - openid
