@@ -28,7 +28,7 @@ spring:
         - id: user-service
           uri: lb://WAYBILL-USER-SERVICE-local
           predicates:
-            - Path=/user-service/**
+            - Path=/user-service/v3/api-docs, /user-service/**
           filters:
             - RewritePath=/user-service/(?<path>.*), /$\{path}
             - name: CircuitBreaker
@@ -39,7 +39,7 @@ spring:
         - id: vehicle-service
           uri: lb://WAYBILL-VEHICLE-SERVICE-local
           predicates:
-            - Path=/vehicle-service/**
+            - Path=/vehicle-service/v3/api-docs, /vehicle-service/**
           filters:
             - RewritePath=/vehicle-service/(?<suburl>.*),/${suburl}
             - name: CircuitBreaker
@@ -86,5 +86,4 @@ spring:
           predicates:
             - Path=/v3/api-docs/**
           filters:
-            - TokenRelay=
             - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
