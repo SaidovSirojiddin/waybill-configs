@@ -3,7 +3,7 @@ spring:
     mongodb:
       uri: mongodb://${spring.data.mongodb.username}:${spring.data.mongodb.password}@${spring.data.mongodb.host}:${spring.data.mongodb.port}/?authSource=admin
       host: localhost
-      port: 37017
+      port: 27018
       username: wb_vehicle
       password: wb_vehicle_pwd
       database: vehicle
