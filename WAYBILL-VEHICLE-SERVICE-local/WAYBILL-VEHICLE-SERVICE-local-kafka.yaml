@@ -5,5 +5,5 @@ spring:
       properties:
         spring.json.trusted.packages: '*'
     consumer:
-      group-id: ticket
+      group-id: to_vehicle
       auto-offset-reset: earliest
