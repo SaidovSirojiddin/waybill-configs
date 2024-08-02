@@ -15,6 +15,24 @@ spring:
       health:
         show-details: ALWAYS
 
+feign:
+  egoviskm:
+    url: 'https://iskm.egov.uz:9444'
+    name: 'iskm.egov.uz'
+    basic:
+      username: 'F6wHgzC1_dzucM9AmO1IO_Yz9uka'
+      password: '6LTqoPlZcDZtJBRHnBfCRbUfkjYa'
+    username: 'mintrans-statistika'
+    password: '1azq7Kb3GLcDAAThRwVv'
+  egovmgw:
+    url: 'https://apimgw.egov.uz:8243'
+    name: 'apimgw.egov.uz'
+  eskiz:
+    url: 'https://notify.eskiz.uz'
+    name: 'eskiz'
+    email: 'azamat_zhuraev@mail.ru'
+    password: 'yvMUfgFaWTlvNUuHLpsrKmGKCKaL683lUg5JKIU5'
+
 
 application:
   version: ${version}
