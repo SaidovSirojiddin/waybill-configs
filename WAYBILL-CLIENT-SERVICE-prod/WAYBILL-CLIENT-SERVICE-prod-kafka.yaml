@@ -1,0 +1,9 @@
+spring:
+  kafka:
+    bootstrap-servers: 192.168.88.237:9092
+    producer:
+      properties:
+        spring.json.trusted.packages: '*'
+    consumer:
+      group-id: ticket
+      auto-offset-reset: earliest
