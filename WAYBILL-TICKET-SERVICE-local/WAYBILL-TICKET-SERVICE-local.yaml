@@ -25,3 +25,6 @@ application:
     - '/swagger-ui/**'
     - '/swagger-ui.html'
     - '/eureka/**'
+
+gateway:
+  url: http://localhost:8080
