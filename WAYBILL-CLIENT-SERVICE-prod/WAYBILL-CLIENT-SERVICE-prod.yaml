@@ -17,7 +17,7 @@ spring:
 
 feign:
   egoviskm:
-    url: 'https://iskm.egov.uz:9444'
+    url: 'http://10.190.44.4:9444'
     name: 'iskm.egov.uz'
     basic:
       username: 'F6wHgzC1_dzucM9AmO1IO_Yz9uka'
@@ -25,7 +25,7 @@ feign:
     username: 'mintrans-statistika'
     password: '1azq7Kb3GLcDAAThRwVv'
   egovmgw:
-    url: 'https://apimgw.egov.uz:8243'
+    url: 'http://10.190.44.4:8243'
     name: 'apimgw.egov.uz'
   eskiz:
     url: 'https://notify.eskiz.uz'
