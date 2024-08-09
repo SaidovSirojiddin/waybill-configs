@@ -26,3 +26,12 @@ application:
     - '/swagger-ui/**'
     - '/swagger-ui.html'
     - '/eureka/**'
+
+cors:
+  allowedHeaders: [ "Accept", "Accept-Language", "Origin", "x-language","Content-Language", "Content-Type", "X-Requested-With", "Authorization" , "Referer"]
+  allowedOrigins: ["*"]
+  allowedOriginPatterns: ["http://localhost:*", "https://*.waybill.uz"]
+  allowedMethods: [ "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD" ]
+  allowCredentials: true
+  exposedHeaders: [ "X-Total-Count", "Content-Disposition" ]
+  urlPattern: "/**"
