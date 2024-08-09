@@ -32,6 +32,8 @@ feign:
     name: 'eskiz'
     email: 'azamat_zhuraev@mail.ru'
     password: 'yvMUfgFaWTlvNUuHLpsrKmGKCKaL683lUg5JKIU5'
+  tax:
+    url: 'https://iskm.egov.uz:9444'
 
 
 application:
