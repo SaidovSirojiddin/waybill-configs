@@ -8,3 +8,16 @@ spring:
       password: WBTicket24
       username: ticket
       uuid-representation: standard
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.88.246:5437/waybill_ticket
+    username: postgres
+    password: waybill_pwd
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    validate-on-migrate: true
+    locations:
+      - classpath:db/migration/structure
+    schemas: public
