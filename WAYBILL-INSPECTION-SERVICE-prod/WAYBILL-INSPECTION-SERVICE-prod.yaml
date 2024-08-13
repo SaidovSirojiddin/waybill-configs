@@ -1,0 +1,27 @@
+server:
+  port: 8083
+  shutdown: graceful
+
+spring:
+  profiles:
+    active: database,docker,eureka,oauth2,kafka,open-api
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+    endpoint:
+      health:
+        show-details: ALWAYS
+
+
+application:
+  version: ${version}
+  whitelist:
+    - '/actuator'
+    - '/actuator/**'
+    - '/v3/api-docs/**'
+    - '/swagger-ui/**'
+    - '/swagger-ui.html'
+    - '/eureka/**'
