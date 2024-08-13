@@ -79,6 +79,17 @@ spring:
               args:
                 name: driverServiceFallBack
                 fallbackUri: forward:/fallback/ticket-service
+                
+        - id: inspection-service
+          uri: lb://WAYBILL-INSPECTION-SERVICE-prod
+          predicates:
+            - Path=/inspection-service/v3/api-docs, /inspection-service/**
+          filters:
+            - RewritePath=/inspection-service/(?<path>.*), /$\{path}
+            - name: CircuitBreaker
+              args:
+                name: driverServiceFallBack
+                fallbackUri: forward:/fallback/inspection-service
 
 
         - id: openapi
