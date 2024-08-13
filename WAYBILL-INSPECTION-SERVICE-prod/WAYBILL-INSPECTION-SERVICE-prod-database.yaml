@@ -5,6 +5,6 @@ spring:
       host: 192.168.88.246
       port: 37079
       username: inspection
-      password: WBinspecton24
+      password: WBinspection24
       database: inspection
       uuid-representation: standard
