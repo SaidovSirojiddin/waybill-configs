@@ -16,7 +16,9 @@ management:
       show-details: ALWAYS
 
 application:
+  user-password-length: 10
   whitelist:
+    - '/api/v1/auth-admin/register'
     - '/api/v1/auth-user/token'
     - '/api/v1/auth-user/refresh-token'
     - '/actuator'
@@ -25,4 +27,8 @@ application:
     - '/swagger-ui/**'
     - '/swagger-ui.html'
     - '/eureka/**'
+
+otp:
+  length: 5
+  validTimeOnSeconds: 180
 
