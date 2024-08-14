@@ -30,5 +30,6 @@ application:
 otp:
   user-password-length: 10
   length: 5
-  validTimeOnSeconds: 180
+  valid-time-seconds: 60
+  life-time: 90
 
