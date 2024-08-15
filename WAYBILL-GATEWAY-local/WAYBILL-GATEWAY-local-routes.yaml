@@ -80,7 +80,7 @@ spring:
                 name: driverServiceFallBack
                 fallbackUri: forward:/fallback/ticket-service
 
-          - id: inspection-service
+        - id: inspection-service
           uri: lb://WAYBILL-INSPECTION-SERVICE-local
           predicates:
             - Path=/inspection-service/v3/api-docs, /inspection-service/**
