@@ -4,7 +4,7 @@ server:
 
 spring:
   profiles:
-    active: database,docker,eureka,oauth2,kafka,open-api
+    active: database,docker,eureka,oauth2,kafka,open-api,circuitbreaker
 
   management:
     endpoints:

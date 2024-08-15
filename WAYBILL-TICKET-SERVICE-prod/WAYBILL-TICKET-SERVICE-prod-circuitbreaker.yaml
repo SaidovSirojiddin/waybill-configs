@@ -1,0 +1,19 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      driver:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5
+        waitDurationInOpenState: 10000
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+      vehicle:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5
+        waitDurationInOpenState: 10000
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
