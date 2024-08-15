@@ -17,6 +17,7 @@ management:
 
 application:
   whitelist:
+    - '/api/v1/otp/send'
     - '/api/v1/auth-admin/register'
     - '/api/v1/auth-user/token'
     - '/api/v1/auth-user/refresh-token'
@@ -28,8 +29,6 @@ application:
     - '/eureka/**'
 
 otp:
-  user-password-length: 10
   length: 5
   valid-time-seconds: 60
-  life-time: 90
 
