@@ -1,0 +1,34 @@
+server:
+  port: 8020
+  shutdown: graceful
+
+spring:
+  profiles:
+    active: admin,database,docker,eureka,keycloak,oauth2,open-api,kafka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+application:
+  whitelist:
+    - '/api/v1/otp/send'
+    - '/api/v1/auth-admin/register'
+    - '/api/v1/auth-user/token'
+    - '/api/v1/auth-user/refresh-token'
+    - '/actuator'
+    - '/actuator/**'
+    - '/v3/api-docs/**'
+    - '/swagger-ui/**'
+    - '/swagger-ui.html'
+    - '/eureka/**'
+
+otp:
+  length: 5
+  valid-time-seconds: 60
+
