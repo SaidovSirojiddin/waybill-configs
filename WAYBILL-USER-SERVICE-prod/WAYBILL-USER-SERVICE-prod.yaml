@@ -16,6 +16,9 @@ management:
       show-details: ALWAYS
 
 application:
+  otp:
+    length: 5
+    validTime: 180
   whitelist:
     - '/api/v1/auth-user/reset/password'
     - '/api/v1/otp/send'
