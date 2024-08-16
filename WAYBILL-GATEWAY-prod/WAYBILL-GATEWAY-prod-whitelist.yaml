@@ -78,3 +78,15 @@ whitelist:
     - '/driver-service/v3/api-docs/**'
     - '/driver-service/eureka/**'
     - '/driver-service/v3/api-docs'
+    
+  inspection-service:
+  - '/inspection-service/webjars/swagger-ui/**'
+  - '/inspection-service/swagger-ui/**'
+  - '/inspection-service/swagger-doc/**'
+  - '/inspection-service/swagger-resources/**'
+  - '/inspection-service/actuator/health'
+  - '/inspection-service/actuator/metrics'
+  - '/inspection-service/actuator/metrics/**'
+  - '/inspection-service/v3/api-docs/**'
+  - '/inspection-service/eureka/**'
+  - '/inspection-service/v3/api-docs'
