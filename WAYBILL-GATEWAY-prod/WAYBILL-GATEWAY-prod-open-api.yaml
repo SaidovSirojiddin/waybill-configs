@@ -16,3 +16,5 @@ springdoc:
         name: Driver Service
       - url: /ticket-service/v3/api-docs
         name: Ticket Service
+      - url: /inspection-service/v3/api-docs
+        name: Inspection Service
