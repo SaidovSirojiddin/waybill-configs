@@ -27,6 +27,7 @@ whitelist:
     - '/user-service/api/v1/auth-user/refresh-token'
     - '/user-service/api/v1/auth-admin/register'
     - '/user-service/api/v1/otp/send'
+    - '/user-service/api/v1/auth-user/reset/password'
 
   vehicleService:
     - '/vehicle-service/swagger-ui.html'

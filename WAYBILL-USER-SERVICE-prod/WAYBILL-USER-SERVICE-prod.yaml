@@ -17,6 +17,7 @@ management:
 
 application:
   whitelist:
+    - '/api/v1/auth-user/reset/password'
     - '/api/v1/otp/send'
     - '/api/v1/auth-admin/register'
     - '/api/v1/auth-user/token'
