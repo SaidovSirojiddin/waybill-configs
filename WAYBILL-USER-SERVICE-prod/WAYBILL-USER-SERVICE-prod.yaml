@@ -33,3 +33,12 @@ otp:
   length: 5
   valid-time-seconds: 180
 
+logging:
+  level:
+    ROOT: info
+    uz.mintrans.waybilluserservice:
+      - debug
+      - warn
+      - trace
+      - error
+
