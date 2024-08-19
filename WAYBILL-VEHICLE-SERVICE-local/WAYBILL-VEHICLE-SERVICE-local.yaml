@@ -5,6 +5,8 @@ server:
 spring:
   profiles:
     active: admin,database,docker,eureka,oauth2,open-api,kafka
+  jackson:
+    default-property-inclusion: non_null
 
 
 management:
