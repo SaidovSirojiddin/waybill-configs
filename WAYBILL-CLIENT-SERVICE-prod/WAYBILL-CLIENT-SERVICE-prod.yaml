@@ -33,7 +33,10 @@ feign:
     email: 'azamat_zhuraev@mail.ru'
     password: 'yvMUfgFaWTlvNUuHLpsrKmGKCKaL683lUg5JKIU5'
   tax:
-    url: 'https://iskm.egov.uz:9444'
+    url: 'https://mspd-api.soliq.uz/mintransport/api'
+    username: 'transport'
+    password: 'Pa$$sv0#d'
+    tokenExpirationInSec: 10800
 
 
 application:
