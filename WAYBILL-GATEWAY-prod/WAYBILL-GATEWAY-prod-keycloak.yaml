@@ -1,0 +1,8 @@
+keycloak:
+  auth-adm-username: waybill-admin
+  auth-adm-password: waybill-admin
+  auth-server-url: https://keycloak.dtransport.uz #/auth
+  auth-realm: waybill
+  auth-client-id: waybill-id
+  auth-client-secret: bN0HmeFduPqbpPOHmb6Upuxklg4ln7o8
+
