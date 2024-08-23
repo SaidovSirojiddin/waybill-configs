@@ -12,17 +12,10 @@ whitelist:
     - '/eureka/**'
 
   userService:
-    - '/user-service/swagger-ui.html'
-    - '/user-service/webjars/swagger-ui/**'
-    - '/user-service/swagger-ui/**'
-    - '/user-service/swagger-doc/**'
-    - '/user-service/swagger-resources/**'
     - '/user-service/actuator/health'
     - '/user-service/actuator/metrics'
     - '/user-service/actuator/metrics/**'
-    - '/user-service/v3/api-docs/**'
     - '/user-service/eureka/**'
-    - '/user-service/v3/api-docs'
     - '/user-service/api/v1/auth-user/token'
     - '/user-service/api/v1/auth-user/refresh-token'
     - '/user-service/api/v1/auth-admin/register'
@@ -30,17 +23,10 @@ whitelist:
     - '/user-service/api/v1/auth-user/reset/password'
 
   vehicleService:
-    - '/vehicle-service/swagger-ui.html'
-    - '/vehicle-service/webjars/swagger-ui/**'
-    - '/vehicle-service/swagger-ui/**'
-    - '/vehicle-service/swagger-doc/**'
-    - '/vehicle-service/swagger-resources/**'
     - '/vehicle-service/actuator/health'
     - '/vehicle-service/actuator/metrics'
     - '/vehicle-service/actuator/metrics/**'
-    - '/vehicle-service/v3/api-docs/**'
     - '/vehicle-service/eureka/**'
-    - '/vehicle-service/v3/api-docs'
 
   ticket-service:
     - '/ticket-service/webjars/swagger-ui/**'
