@@ -18,6 +18,7 @@ management:
 
 application:
   version: ${version}
+  adminCompanyId: 'b627bc73-ae76-46c4-84bc-8eeb77653dc1'
   whitelist:
     - '/actuator'
     - '/actuator/**'
